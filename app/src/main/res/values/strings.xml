@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Hook</string>
+    <string name="app_hint">这个模块是用来检测用户隐私合规的，在用户未授权同意前，调用接口获取信息属于违规</string>
+</resources>
