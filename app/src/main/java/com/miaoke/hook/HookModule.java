@@ -3,6 +3,7 @@ package com.miaoke.hook;
 import android.util.Log;
 
 import com.miaoke.hook.utils.DeviceUtils;
+import com.miaoke.hook.utils.InstallApkUtils;
 import com.miaoke.hook.utils.LocationUtils;
 import com.miaoke.hook.utils.MacUtils;
 
@@ -25,6 +26,8 @@ public class HookModule implements IXposedHookLoadPackage {
         MacUtils.hookMac(TAG, lpParam);
 
         LocationUtils.hookLocation(TAG, lpParam);
+
+        InstallApkUtils.hookInstallApk(TAG, lpParam);
     }
 
 }

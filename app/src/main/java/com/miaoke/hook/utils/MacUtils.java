@@ -38,15 +38,23 @@ public class MacUtils {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
                         // SystemProperties.get("wifi.interface", "wlan0");
-                        if (param.args[0].toString().contains("wifi") || param.args[1].toString().contains("wifi")) {
-                            Log.i(TAG, "-----------> 调用SystemProperties.get(" + param.args[0] + ", " + param.args[1] + ")\n");
+                        try {
+                            if (param.args[0].toString().contains("wifi") || param.args[1].toString().contains("wifi")) {
+                                Log.i(TAG, "-----------> 调用SystemProperties.get(" + param.args[0] + ", " + param.args[1] + ")\n");
+                            }
+                        } catch (Exception ignore) {
+
                         }
                     }
 
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                        if (param.args[0].toString().contains("wifi") || param.args[1].toString().contains("wifi")) {
-                            Log.i(TAG, StackUtils.getMethodStack());
+                        try {
+                            if (param.args[0].toString().contains("wifi") || param.args[1].toString().contains("wifi")) {
+                                Log.i(TAG, StackUtils.getMethodStack());
+                            }
+                        } catch (Exception ignore) {
+
                         }
                         super.afterHookedMethod(param);
                     }
@@ -62,16 +70,18 @@ public class MacUtils {
                 new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) {
-                        if (param.args[0].toString().contains("net")) {
-                            Log.i(TAG, "-----------> 调用Runtime.exec(" + param.args[0] + ")\n");
-                        }
+//                        if (param.args[0].toString().contains("net")) {
+//                            Log.i(TAG, "-----------> 调用Runtime.exec(" + param.args[0] + ")\n");
+//                        }
+                        Log.i(TAG, "-----------> 调用Runtime.exec(" + param.args[0] + ")\n");
                     }
 
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                        if (param.args[0].toString().contains("net")) {
-                            Log.i(TAG, StackUtils.getMethodStack());
-                        }
+//                        if (param.args[0].toString().contains("net")) {
+//                            Log.i(TAG, StackUtils.getMethodStack());
+//                        }
+                        Log.i(TAG, StackUtils.getMethodStack());
                         super.afterHookedMethod(param);
                     }
                 }

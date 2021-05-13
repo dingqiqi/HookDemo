@@ -1,6 +1,7 @@
 package com.miaoke.hook.utils;
 
 import android.content.ContentResolver;
+import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -47,6 +48,18 @@ public class DeviceUtils {
                     }
                 }
         );
+
+//        XposedHelpers.findAndHookMethod(
+//                "com.android.internal.telephony.PhoneSubInfo",
+//                lpParam.classLoader,
+//                "getDeviceId",
+//                new XC_MethodHook() {
+//                    @Override
+//                    protected void beforeHookedMethod(MethodHookParam param) {
+//                        Log.i(TAG, "--------> 调用PhoneSubInfo.getDeviceId()\n");
+//                    }
+//                }
+//        );
 
         XposedHelpers.findAndHookMethod(
                 android.telephony.TelephonyManager.class.getName(),
